@@ -117,7 +117,7 @@ document.querySelectorAll(".shot img").forEach(img=>{
 const heroActions=document.querySelector(".hero .actions");
 if(heroActions&&!document.querySelector(".hero-scroll-hint")){
   const hint=document.createElement("div");
-  hint.className="hero-scroll-hint";hint.innerHTML="<span aria-hidden="true"></span> Aşağı kaydır ve VYRA'yı keşfet";
+  hint.className="hero-scroll-hint";hint.innerHTML='<span aria-hidden="true"></span> Aşağı kaydır ve VYRA'yı keşfet';
   heroActions.parentElement?.appendChild(hint);
 }
 
