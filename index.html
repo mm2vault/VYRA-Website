@@ -1,59 +1,100 @@
 <!doctype html>
 <html lang="tr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#07030d"><meta name="description" content="VYRA — Müziği kendin gibi dinle.">
-<title>VYRA — Müziği kendin gibi dinle.</title>
-<link rel="icon" href="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png"><link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07030d">
+<meta name="description" content="VYRA — modern, hızlı ve kişisel Android müzik deneyimi.">
+<title>VYRA — Müziği sadece dinleme. Hisset.</title>
+<link rel="icon" href="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-bg"></div><div class="noise"></div>
+<div id="progress"></div>
+<canvas id="particles" aria-hidden="true"></canvas>
+<div class="cursor-glow" aria-hidden="true"></div>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="ambient ambient-c"></div>
+<div class="grid-bg"></div><div class="noise"></div>
+
 <header class="nav">
 <a class="brand" href="#"><span class="brand-mark"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt="VYRA"></span><span>VYRA</span></a>
-<nav class="desktop-nav"><a href="#features">Özellikler</a><a href="#screens">Uygulama</a><a href="#download">İndir</a></nav>
+<nav class="desktop-nav"><a href="#features">Özellikler</a><a href="#screens">Uygulama</a><a href="#experience">Deneyim</a><a href="#download">İndir</a></nav>
 <div class="nav-actions"><a class="github" href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub <span>↗</span></a><button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false"><i></i><i></i></button></div>
-<div class="mobile-menu"><a href="#features">Özellikler</a><a href="#screens">Uygulama</a><a href="#download">İndir</a><a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub ↗</a></div>
+<div class="mobile-menu"><a href="#features">Özellikler</a><a href="#screens">Uygulama</a><a href="#experience">Deneyim</a><a href="#download">İndir</a><a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub ↗</a></div>
 </header>
+
 <main>
 <section class="hero">
 <div class="hero-copy reveal">
-<div class="eyebrow"><span></span> ANDROID MUSIC EXPERIENCE</div>
-<h1>Müziği<br><em>kendin gibi</em><br>dinle.</h1>
-<p>VYRA, YouTube ve yerel müzik deneyimini tek bir hızlı, akıcı ve kişisel oynatıcıda buluşturur.</p>
-<div class="actions"><a id="downloadBtn" class="primary" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">APK'yı İndir <b>↓</b></a><a class="secondary" href="#features">VYRA'yı Keşfet <b>→</b></a></div>
+<div class="eyebrow"><span></span> ANDROID MUSIC EXPERIENCE <b>● LIVE</b></div>
+<h1>Müziği sadece<br><em>dinleme.</em><br>Hisset.</h1>
+<p>VYRA; YouTube keşfini, arka planda oynatmayı, playlistlerini ve kişisel müzik deneyimini tek bir modern Android uygulamasında buluşturur.</p>
+<div class="actions"><a id="downloadBtn" class="primary magnetic" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">APK'yı İndir <b>↓</b></a><a class="secondary magnetic" href="#features">VYRA'yı Keşfet <b>→</b></a></div>
 <div class="version-row"><span class="status-dot"></span><span id="version">Son sürüm kontrol ediliyor…</span></div>
 <div class="hero-stats"><div><strong>Android 8+</strong><span>Uyumluluk</span></div><div><strong>Open Source</strong><span>Şeffaf kod</span></div><div><strong>Ücretsiz</strong><span>Her zaman</span></div></div>
 </div>
-<div class="hero-visual reveal">
-<div class="visual-ring ring-1"></div><div class="visual-ring ring-2"></div><div class="halo"></div>
-<div class="phone"><div class="speaker"></div><div class="camera"></div><img src="https://i.imgur.com/QtuxYWK.jpeg" alt="VYRA uygulama ekranı"><div class="phone-glow"></div></div>
-<div class="float-card fc-one"><span class="mini-icon">♫</span><div><strong>Now Playing</strong><small>VYRA Player</small></div></div>
-<div class="float-card fc-two"><span class="equalizer"><i></i><i></i><i></i><i></i></span><div><strong>Background</strong><small>Playback aktif</small></div></div>
+
+<div class="hero-visual reveal" id="heroVisual">
+<div class="visual-ring ring-1"></div><div class="visual-ring ring-2"></div><div class="visual-ring ring-3"></div><div class="halo"></div>
+<div class="wave-orbit"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="phone tilt-target"><div class="phone-top"></div><div class="speaker"></div><div class="camera"></div><img src="https://i.imgur.com/QtuxYWK.jpeg" alt="VYRA uygulama ekranı"><div class="phone-glow"></div></div>
+<div class="float-card fc-one tilt-card"><span class="mini-icon">♫</span><div><strong>Now Playing</strong><small>VYRA Player · 03:42</small></div></div>
+<div class="float-card fc-two tilt-card"><span class="equalizer"><i></i><i></i><i></i><i></i></span><div><strong>Background</strong><small>Playback aktif</small></div></div>
+<div class="float-card fc-three tilt-card"><span class="mini-icon">♡</span><div><strong>Liked</strong><small>Koleksiyonuna eklendi</small></div></div>
 </div>
 </section>
-<section class="marquee"><span>FAST PLAYBACK</span><b>✦</b><span>BACKGROUND AUDIO</span><b>✦</b><span>PLAYLISTS</span><b>✦</b><span>LIVE LYRICS</span><b>✦</b><span>YOUR MUSIC</span></section>
+
+<section class="marquee"><div class="marquee-track"><span>FAST PLAYBACK</span><b>✦</b><span>BACKGROUND AUDIO</span><b>✦</b><span>PLAYLISTS</span><b>✦</b><span>LIVE LYRICS</span><b>✦</b><span>YOUR MUSIC</span><b>✦</b><span>SMART QUEUE</span><b>✦</b><span>FAST PLAYBACK</span><b>✦</b><span>BACKGROUND AUDIO</span></div></section>
+
 <section id="features" class="section features-section">
-<div class="section-head reveal"><span>01 / ÖZELLİKLER</span><h2>Dinlemek için<br><em>daha iyi bir yol.</em></h2><p>VYRA, müziği merkeze alan sade bir arayüzü güçlü oynatma özellikleriyle birleştirir.</p></div>
+<div class="section-head reveal"><span>01 / ÖZELLİKLER</span><h2>Bir oynatıcıdan<br><em>daha fazlası.</em></h2><p>VYRA'nın her parçası müziği daha hızlı bulman, daha rahat dinlemen ve deneyimini kendine göre şekillendirmen için tasarlandı.</p></div>
 <div class="feature-grid">
-<article class="feature feature-main reveal"><div class="feature-top"><div class="icon">♫</div><label>01 / PLAYBACK</label></div><h3>Arka planda çal</h3><p>Ekranı kapat. Uygulamadan çık. Müziğin devam etsin. Bildirim kontrolleriyle oynatmayı her yerden yönet.</p><div class="feature-line"></div></article>
-<article class="feature reveal"><div class="feature-top"><div class="icon">⌕</div><label>02 / DISCOVER</label></div><h3>Akıllı keşif</h3><p>Arama, yeni müzikler ve kişisel keşif akışına hızlıca ulaş.</p></article>
-<article class="feature reveal"><div class="feature-top"><div class="icon">≡</div><label>03 / QUEUE</label></div><h3>Kuyruk & playlist</h3><p>Listelerini oluştur, sıranı düzenle ve dinleme akışını kendin yönet.</p></article>
-<article class="feature reveal"><div class="feature-top"><div class="icon">◒</div><label>04 / AUDIO</label></div><h3>Ses kontrolü</h3><p>Hız, perde, loudness normalization ve cihaz ses özellikleriyle daha fazla kontrol.</p></article>
-<article class="feature feature-main reveal"><div class="feature-top"><div class="icon">♡</div><label>05 / PERSONAL</label></div><h3>Koleksiyonun seninle</h3><p>Beğenilenler, geçmiş, listeler ve kişisel müzik alanın hesabınla birlikte seninle.</p><div class="feature-line"></div></article>
-<article class="feature reveal"><div class="feature-top"><div class="icon">≋</div><label>06 / LYRICS</label></div><h3>Canlı sözler</h3><p>Desteklenen içeriklerde şarkıyı sözleriyle birlikte takip et.</p></article>
+<article class="feature feature-main reveal tilt-card"><div class="feature-top"><div class="icon">♫</div><label>01 / PLAYBACK</label></div><h3>Arka planda çal</h3><p>Ekranı kapat, uygulamadan çık veya başka bir uygulamaya geç. Müziğin devam etsin; kontrol sende kalsın.</p><div class="feature-line"></div><div class="feature-badge">BACKGROUND AUDIO</div></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">⌕</div><label>02 / DISCOVER</label></div><h3>Hızlı keşif</h3><p>Aradığın müziğe hızlı ulaş, yeni içerikleri keşfet ve dinleme akışını kaybetme.</p></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">≡</div><label>03 / QUEUE</label></div><h3>Akıllı kuyruk</h3><p>Sıradaki şarkıları düzenle, parçaları öne al ve kendi akışını anında oluştur.</p></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">♡</div><label>04 / LIBRARY</label></div><h3>Kişisel koleksiyon</h3><p>Beğendiklerin, geçmişin ve playlistlerin tek bir yerde. Müzik alanın sana ait.</p></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">◒</div><label>05 / AUDIO</label></div><h3>Ses kontrolü</h3><p>Oynatma hızından perde kontrolüne kadar desteklenen ses özellikleriyle daha fazla özgürlük.</p></article>
+<article class="feature feature-main reveal tilt-card"><div class="feature-top"><div class="icon">≋</div><label>06 / LYRICS</label></div><h3>Sözlerle birlikte dinle</h3><p>Desteklenen içeriklerde şarkının sözlerini takip et. Müzik ve ekran aynı ritimde ilerlesin.</p><div class="feature-line"></div><div class="feature-badge">LYRICS MODE</div></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">⚡</div><label>07 / PERFORMANCE</label></div><h3>Hızlı ve akıcı</h3><p>Gereksiz yüklerden uzak arayüz, hızlı geçişler ve mobil odaklı kullanım.</p></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">◐</div><label>08 / DESIGN</label></div><h3>Modern arayüz</h3><p>Koyu tema, mor atmosfer ve müziği öne çıkaran temiz bir tasarım dili.</p></article>
+<article class="feature reveal tilt-card"><div class="feature-top"><div class="icon">⌁</div><label>09 / CONTROL</label></div><h3>Bildirim kontrolleri</h3><p>Telefonun kilit ekranından ve bildirim panelinden oynatmayı yönetebil.</p></article>
+<article class="feature feature-main reveal tilt-card"><div class="feature-top"><div class="icon">∞</div><label>10 / OPEN SOURCE</label></div><h3>Şeffaf, özgür, geliştirilebilir</h3><p>VYRA açık kaynak yaklaşımıyla geliştiriliyor. Kodunu inceleyebilir, projeyi takip edebilir ve gelişimine katkıda bulunabilirsin.</p><div class="feature-line"></div><div class="feature-badge">OPEN SOURCE</div></article>
 </div>
 </section>
+
+<section class="stats-band reveal">
+<div><strong>01</strong><span>Modern deneyim</span></div><div><strong>24/7</strong><span>Arka plan oynatma</span></div><div><strong>∞</strong><span>Kendi müziğin</span></div><div><strong>100%</strong><span>VYRA ruhu</span></div>
+</section>
+
 <section id="screens" class="screens section">
-<div class="section-head reveal"><span>02 / UYGULAMA</span><h2>Telefonunda<br><em>VYRA.</em></h2><p>Gerçek uygulama ekranlarını yakından incele.</p></div>
+<div class="section-head reveal"><span>02 / UYGULAMA</span><h2>Telefonunda<br><em>VYRA.</em></h2><p>Gerçek VYRA ekranlarını yakından incele. Kartlara dokun, büyüt ve uygulamanın atmosferini keşfet.</p></div>
 <div class="gallery reveal">
-<div class="shot tall"><img src="https://i.imgur.com/xReSL3X.jpeg" alt="VYRA ekranı"></div><div class="shot"><img src="https://i.imgur.com/2T3pYsK.jpeg" alt="VYRA ekranı"></div><div class="shot"><img src="https://i.imgur.com/3o4hIif.jpeg" alt="VYRA ekranı"></div><div class="shot"><img src="https://i.imgur.com/vT8892A.jpeg" alt="VYRA ekranı"></div><div class="shot"><img src="https://i.imgur.com/vT8892A.jpeg" alt="VYRA ekranı"></div>
+<div class="shot tall featured-shot"><img src="https://i.imgur.com/QtuxYWK.jpeg" alt="VYRA ekranı 1"><span>HOME</span></div>
+<div class="shot"><img src="https://i.imgur.com/xReSL3X.jpeg" alt="VYRA ekranı 2"><span>DISCOVER</span></div>
+<div class="shot"><img src="https://i.imgur.com/2T3pYsK.jpeg" alt="VYRA ekranı 3"><span>PLAYER</span></div>
+<div class="shot"><img src="https://i.imgur.com/3o4hIif.jpeg" alt="VYRA ekranı 4"><span>LIBRARY</span></div>
+<div class="shot"><img src="https://i.imgur.com/vT8892A.jpeg" alt="VYRA ekranı 5"><span>PLAYLIST</span></div>
 </div>
 </section>
-<section class="manifesto reveal"><div class="manifesto-mark"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt=""></div><div><span>03 / FELSEFE</span><h2>Müzik sana<br><em>ait olmalı.</em></h2><p>Gereksiz karmaşayı kaldır. Müziği merkeze koy. VYRA hızlı açılır, modern görünür ve kontrolü sana bırakır.</p></div></section>
+
+<section id="experience" class="experience section">
+<div class="section-head reveal"><span>03 / DENEYİM</span><h2>Müziğin ritmine<br><em>uyum sağlar.</em></h2></div>
+<div class="experience-grid">
+<div class="experience-panel big reveal"><div class="panel-orb"></div><div class="mini-label">NOW PLAYING</div><div class="player-art"><img src="https://i.imgur.com/2T3pYsK.jpeg" alt="VYRA player"></div><div class="player-info"><strong>VYRA — Music Experience</strong><span>Background playback aktif</span></div><div class="progress"><i></i></div><div class="player-controls"><b>↶</b><b class="play">▶</b><b>↷</b></div></div>
+<div class="experience-panel reveal"><div class="mini-label">VISUALIZER</div><h3>Ritmi gör.</h3><p>Hareketli dalga formu ve neon ışıklar VYRA'nın müzik odaklı atmosferini güçlendirir.</p><div class="bars"><i style="--h:18%"></i><i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:69%"></i><i style="--h:86%"></i><i style="--h:31%"></i><i style="--h:48%"></i><i style="--h:65%"></i><i style="--h:82%"></i><i style="--h:27%"></i><i style="--h:44%"></i><i style="--h:61%"></i><i style="--h:78%"></i><i style="--h:23%"></i><i style="--h:40%"></i><i style="--h:57%"></i><i style="--h:74%"></i><i style="--h:19%"></i><i style="--h:36%"></i><i style="--h:53%"></i><i style="--h:70%"></i><i style="--h:87%"></i><i style="--h:32%"></i><i style="--h:49%"></i><i style="--h:66%"></i><i style="--h:83%"></i><i style="--h:28%"></i><i style="--h:45%"></i></div></div>
+<div class="experience-panel reveal"><div class="mini-label">YOUR LIBRARY</div><h3>Her şeyin<br>tek yerde.</h3><div class="library-list"><span>♡ Beğenilenler <b>›</b></span><span>◷ Dinleme geçmişi <b>›</b></span><span>≡ Playlistler <b>›</b></span><span>＋ Kuyruğa ekle <b>›</b></span></div></div>
+<div class="experience-panel reveal"><div class="mini-label">MADE FOR ANDROID</div><h3>Telefonuna<br>uyumlu.</h3><p>Küçük ekranlardan büyük ekranlara kadar responsive düşünülmüş modern deneyim.</p><div class="device-row"><span>PHONE</span><span>TABLET</span><span>ANDROID</span></div></div>
+</div>
+</section>
+
+<section class="manifesto reveal"><div class="manifesto-mark"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt="VYRA"></div><div><span>04 / FELSEFE</span><h2>Müzik sana<br><em>ait olmalı.</em></h2><p>Gereksiz karmaşayı kaldır. Müziği merkeze koy. VYRA hızlı açılır, modern görünür ve kontrolü sana bırakır.</p></div></section>
+
 <section id="download" class="section download reveal">
-<div class="download-box"><div class="download-copy"><span>04 / BAŞLA</span><h2>VYRA'yı<br><em>keşfet.</em></h2><p>Android cihazında yeni müzik deneyimini başlat.</p></div><div class="download-side"><a id="downloadBtn2" class="primary" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">En Son APK'yı İndir <b>↓</b></a><small>Android 8.0+ · Açık kaynak · Ücretsiz</small></div></div>
+<div class="download-box"><div class="download-copy"><span>05 / BAŞLA</span><h2>VYRA'yı<br><em>keşfet.</em></h2><p>Android cihazında yeni müzik deneyimini başlat.</p><div class="download-pills"><span>Android 8+</span><span>Open Source</span><span>Ücretsiz</span></div></div><div class="download-side"><a id="downloadBtn2" class="primary magnetic" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">En Son APK'yı İndir <b>↓</b></a><a class="download-link" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">Tüm sürümleri gör ↗</a><small>Güvenli indirme · GitHub Releases</small></div></div>
 </section>
 </main>
-<footer><a class="brand" href="#"><span class="brand-mark"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt="VYRA"></span><span>VYRA</span></a><p>Müziği kendin gibi dinle.</p><div class="footer-links"><a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">Releases</a></div></footer>
+
+<footer><a class="brand" href="#"><span class="brand-mark"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt="VYRA"></span><span>VYRA</span></a><p>Müziği sadece dinleme. Hisset.</p><div class="footer-links"><a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">Releases</a></div></footer>
 <script src="script.js"></script>
-</body></html>
+</body>
+</html>
