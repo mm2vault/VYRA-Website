@@ -4,7 +4,7 @@ if(!reduce)document.documentElement.classList.add("js-ready");
 const finePointer=window.matchMedia("(pointer:fine)").matches;
 const linkId=document.querySelector('meta[name="vyra-enhanced"]');
 if(!linkId){
-  const l=document.createElement("link");l.rel="stylesheet";l.href="enhancements.css?v=20261009";document.head.appendChild(l);
+  const l=document.createElement("link");l.rel="stylesheet";l.href="enhancements.css?v=20261009.2";document.head.appendChild(l);
   const m=document.createElement("meta");m.name="vyra-enhanced";m.content="1";document.head.appendChild(m);
 }
 
