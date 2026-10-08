@@ -121,3 +121,45 @@
   #lightbox img{max-width:94vw;max-height:82vh;border-radius:16px}
   #lightbox>button{top:14px;right:14px}
 }
+
+
+/* Mobile finishing pass — targeted only */
+@media (max-width: 620px) {
+  .nav { position: sticky; top: 0; background: #07030dcc; backdrop-filter: blur(18px); }
+  .mobile-menu { z-index: 40; max-height: calc(100svh - 84px); overflow-y: auto; }
+  .hero { overflow: clip; }
+  .hero-visual { width: 100%; overflow: visible; }
+  .phone { max-width: 64vw; }
+  .float-card { max-width: 145px; }
+  .fc-one { left: 0; }
+  .fc-two { right: 0; }
+  .fc-three { right: 8px; }
+  .hero-stats { width: 100%; }
+  .hero-stats div { min-width: 0; }
+  .hero-stats strong, .hero-stats span { white-space: nowrap; }
+  .actions .primary, .actions .secondary { min-height: 52px; }
+  .feature-grid, .experience-grid, .gallery { width: 100%; }
+  .gallery .shot { min-width: 0; }
+  #cinematic { width: 100%; overflow: clip; }
+  .cine-story { width: 100%; }
+  .cine-stage { width: 100%; }
+  .cine-phone { max-width: 64vw; }
+  .cine-caption { max-width: calc(100% - 32px); }
+  .cine-caption > div:first-child { min-width: 0; }
+  .cine-caption strong, .cine-caption small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px; }
+  #lightbox img { max-width: 94vw; max-height: 78svh; }
+}
+@media (max-width: 390px) {
+  .hero h1 { font-size: 49px; }
+  .hero-visual { height: 420px; }
+  .phone { width: 215px; }
+  .float-card { transform: scale(.9); transform-origin: center; }
+  .fc-one { left: -8px; }
+  .fc-two { right: -8px; }
+  .fc-three { right: 0; }
+  .hero-stats { gap: 7px; }
+  .hero-stats strong { font-size: 9px; }
+  .hero-stats span { font-size: 7px; }
+  .cine-phone { width: 220px; max-width: 62vw; }
+  .cine-controls button { min-width: 34px; }
+}
