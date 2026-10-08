@@ -4,7 +4,7 @@ if(!reduce)document.documentElement.classList.add("js-ready");
 const finePointer=window.matchMedia("(pointer:fine)").matches;
 const linkId=document.querySelector('meta[name="vyra-enhanced"]');
 if(!linkId){
-  const l=document.createElement("link");l.rel="stylesheet";l.href="enhancements.css?v=20261009.3";document.head.appendChild(l);
+  const l=document.createElement("link");l.rel="stylesheet";l.href="enhancements.css?v=20261009.4";document.head.appendChild(l);
   const m=document.createElement("meta");m.name="vyra-enhanced";m.content="1";document.head.appendChild(m);
 }
 
@@ -121,134 +121,6 @@ if(heroActions&&!document.querySelector(".hero-scroll-hint")){
   hint.className="hero-scroll-hint";hint.innerHTML="<span aria-hidden=\"true\"></span> Aşağı kaydır ve VYRA'yı keşfet";
   heroActions.parentElement?.appendChild(hint);
 }
-
-const cinematicStyleFix=document.createElement("style");
-cinematicStyleFix.textContent=".cine-story .cine-stage{transition:box-shadow .35s ease}.cine-story .cine-stage.deep{box-shadow:0 55px 140px #000,0 0 100px #8d3cff20}.cine-story .cine-stage.deep .cine-phone{box-shadow:0 55px 120px #000,0 0 105px #8d3cff4a}";
-document.head.appendChild(cinematicStyleFix);
-
-const screenImages=[
- "https://i.imgur.com/QtuxYWK.jpeg",
- "https://i.imgur.com/xReSL3X.jpeg",
- "https://i.imgur.com/2T3pYsK.jpeg",
- "https://i.imgur.com/3o4hIif.jpeg",
- "https://i.imgur.com/vT8892A.jpeg"
-];
-
-const cinematic=document.createElement("section");
-cinematic.id="cinematic";
-cinematic.innerHTML=
-'<div class="cine-head reveal">'+
-'<span>04 / CINEMATIC SHOWCASE</span>'+
-'<h2>VYRA\'yı<br><em>yakından hisset.</em></h2>'+
-'<p>Gerçek VYRA ekranlarını, ürün filmi hissi veren bir scroll deneyimine dönüştürdük. Aşağı indikçe telefon, ışık ve ekran değişimi birlikte ilerler.</p>'+
-'<div class="cine-scroll-note"><i></i> Kaydırarak sahneleri değiştir</div>'+
-'</div>'+
-'<div class="cine-story">'+
-'<div class="cine-stage" id="cineStage">'+
-'<div class="cine-orb"></div><div class="cine-orb o2"></div><div class="cine-orb o3"></div>'+
-'<div class="cine-hotspot h1"></div><div class="cine-hotspot h2"></div><div class="cine-hotspot h3"></div>'+
-'<div class="cine-label">VYRA / EXPERIENCE</div>'+
-'<div class="cine-counter"><b id="cineCounter">01</b> / 05</div>'+
-'<div class="cine-step" id="cineStep">01 / 05</div>'+
-'<div class="cine-phone" id="cinePhone"><img id="cineImage" src="'+screenImages[0]+'" alt="VYRA uygulama önizlemesi"></div>'+
-'<div class="cine-caption"><div><strong id="cineTitle">HOME EXPERIENCE</strong><small id="cineSub">Hızlı, sade ve müzik odaklı.</small></div><div class="cine-dots" id="cineDots"></div></div>'+
-'<div class="cine-controls"><button id="cinePrev" type="button">← Önceki</button><button id="cineNext" type="button">Sonraki →</button></div>'+
-'<div class="cine-progress"><i id="cineProgress"></i></div>'+
-'</div></div>'+
-'<div class="cine-steps" id="cineSteps" aria-label="VYRA ekranları"></div>';
-
-document.querySelector(".manifesto")?.before(cinematic);
-const cineHead=cinematic.querySelector(".cine-head");
-if(cineHead)revealObserver.observe(cineHead);
-
-const cineData=[
- ["HOME EXPERIENCE","Hızlı, sade ve müzik odaklı."],
- ["DISCOVER","Yeni müzikleri keşfet ve akışını koru."],
- ["PLAYER","Müziği merkeze alan oynatma deneyimi."],
- ["LIBRARY","Koleksiyonun, geçmişin ve listelerin."],
- ["PLAYLIST","Kendi müzik akışını kendin oluştur."]
-];
-let cineIndex=0,cineTimer=0;
-const cineImage=document.getElementById("cineImage"),cineTitle=document.getElementById("cineTitle"),cineSub=document.getElementById("cineSub"),cineStep=document.getElementById("cineStep"),cineCounter=document.getElementById("cineCounter"),cinePhone=document.getElementById("cinePhone"),cineDots=document.getElementById("cineDots"),cineSteps=document.getElementById("cineSteps"),cineStage=document.getElementById("cineStage"),cineProgress=document.getElementById("cineProgress"),cineStory=cinematic.querySelector(".cine-story");
-
-cineData.forEach((_,i)=>{
-  const d=document.createElement("i");cineDots.appendChild(d);
-  const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Ekran "+(i+1));b.addEventListener("click",()=>{setCine(i);cineStage?.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})});cineSteps.appendChild(b);
-});
-
-function renderCineDots(){
-  cineDots?.querySelectorAll("i").forEach((d,n)=>d.classList.toggle("active",n===cineIndex));
-  cineSteps?.querySelectorAll("button").forEach((b,n)=>{b.classList.toggle("active",n===cineIndex);b.setAttribute("aria-current",n===cineIndex?"step":"false")});
-}
-function setCine(i,instant=false){
-  cineIndex=(i+5)%5;
-  if(!cinePhone||!cineImage)return;
-  cineStage?.classList.add("is-transitioning");
-  cinePhone.style.opacity=instant?"1":".35";
-  cinePhone.style.transform="translate3d(0,0,0) scale(.96) rotateY("+(cineIndex-2)*3+"deg) rotateZ("+((cineIndex%2?1:-1)*.6)+"deg)";
-  clearTimeout(cineTimer);
-  cineTimer=setTimeout(()=>{
-    cineImage.src=screenImages[cineIndex];
-    cineTitle.textContent=cineData[cineIndex][0];
-    cineSub.textContent=cineData[cineIndex][1];
-    cineStep.textContent=String(cineIndex+1).padStart(2,"0")+" / 05";
-    cineCounter.textContent=String(cineIndex+1).padStart(2,"0");
-    renderCineDots();
-    cinePhone.style.opacity="1";
-    cinePhone.style.transform="translate3d(0,0,0) scale(1) rotateY("+(cineIndex-2)*3+"deg) rotateZ("+((cineIndex%2?1:-1)*.35)+"deg)";
-    cineStage?.classList.remove("is-transitioning");
-  },instant?0:120);
-}
-document.getElementById("cinePrev")?.addEventListener("click",()=>setCine(cineIndex-1));
-document.getElementById("cineNext")?.addEventListener("click",()=>setCine(cineIndex+1));
-setCine(0,true);
-
-let cineTick=0;
-const updateCinematicFromScroll=()=>{
-  cineTick=0;
-  if(!cineStory||reduce)return;
-  const r=cineStory.getBoundingClientRect(),travel=Math.max(1,r.height-innerHeight*.72);
-  const raw=(innerHeight*.28-r.top)/travel;
-  const p=Math.min(1,Math.max(0,raw));
-  const idx=Math.min(4,Math.floor(p*5));
-  if(idx!==cineIndex)setCine(idx);
-  const local=(p*5)%1;
-  const lift=(local-.5)*10;
-  const scale=1+Math.sin(p*Math.PI)*.035;
-  const z=(idx-2)*3;
-  if(cinePhone)cinePhone.style.transform="translate3d(0,"+lift+"px,0) scale("+scale+") rotateY("+z+"deg) rotateZ("+((idx%2?1:-1)*.4)+"deg)";
-  if(cineProgress)cineProgress.style.width=Math.max(20,Math.min(100,(p*100)))+"%";
-  if(p>.82)cineStage?.classList.add("deep");else cineStage?.classList.remove("deep");
-};
-const onScrollCine=()=>{
-  if(cineTick)return;
-  cineTick=requestAnimationFrame(updateCinematicFromScroll);
-};
-addEventListener("scroll",onScrollCine,{passive:true});
-addEventListener("resize",onScrollCine,{passive:true});
-
-let touchX=0;
-cineStage?.addEventListener("touchstart",e=>{touchX=e.changedTouches[0].clientX},{passive:true});
-cineStage?.addEventListener("touchend",e=>{
-  const dx=e.changedTouches[0].clientX-touchX;
-  if(Math.abs(dx)>50)setCine(dx<0?cineIndex+1:cineIndex-1);
-},{passive:true});
-
-const lightbox=document.createElement("div");
-lightbox.id="lightbox";lightbox.setAttribute("role","dialog");lightbox.setAttribute("aria-modal","true");lightbox.setAttribute("aria-hidden","true");
-lightbox.innerHTML='<button aria-label="Görseli kapat" type="button">×</button><img alt="VYRA ekran görüntüsü">';
-document.body.appendChild(lightbox);
-const lbImg=lightbox.querySelector("img"),lbClose=lightbox.querySelector("button");let lightboxReturn=null;
-const closeLightbox=()=>{
-  lightbox.classList.remove("open");lightbox.setAttribute("aria-hidden","true");document.body.style.overflow="";
-  lightboxReturn?.focus?.();lightboxReturn=null;
-};
-document.querySelectorAll(".shot img").forEach(img=>img.addEventListener("click",e=>{
-  e.preventDefault();e.stopPropagation();lightboxReturn=e.currentTarget;lbImg.src=e.currentTarget.src;lbImg.alt=e.currentTarget.alt||"VYRA ekran görüntüsü";
-  lightbox.classList.add("open");lightbox.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";lbClose.focus();
-}));
-lbClose.addEventListener("click",closeLightbox);
-lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
 
 const playerPanel=document.querySelector(".experience-panel.big");
 if(playerPanel){
