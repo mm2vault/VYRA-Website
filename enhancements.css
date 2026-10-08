@@ -61,3 +61,27 @@
   .hero-scroll-hint span:after,.cine-hotspot{animation:none}
   .experience-panel.big.playing .player-art{animation:none}
 }
+
+/* final overflow guard */
+html,body{max-width:100%;overflow-x:clip}
+main,header,footer,section,article,.section,.hero,.hero-visual,.experience-grid,.feature-grid,.gallery,.download-box,.manifesto,#cinematic{min-width:0;max-width:100%}
+img,video,canvas,svg{max-width:100%}
+@media(max-width:900px){
+  .hero-visual{overflow:hidden}
+  .feature-grid,.gallery,.experience-grid{width:100%}
+  .feature,.shot,.experience-panel,.download-box{min-width:0}
+  .hero h1,.section-head h2,.manifesto h2,.download-box h2{overflow-wrap:anywhere}
+}
+@media(max-width:620px){
+  .nav,.hero,.section,footer{width:100%}
+  .hero-visual{overflow:hidden}
+  .float-card{max-width:46vw}
+  .float-card small,.float-card strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cine-story,.cine-story .cine-stage{width:100%;max-width:100%}
+  .cine-controls{max-width:calc(100% - 125px);overflow:hidden}
+  .cine-controls button{white-space:nowrap}
+  .cine-caption{max-width:calc(100% - 36px)}
+  .cine-caption strong,.cine-caption small{display:block;max-width:70vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .download-side,.download-side .primary{max-width:100%}
+  .footer-links{max-width:100%;flex-wrap:wrap}
+}
