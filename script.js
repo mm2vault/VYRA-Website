@@ -11,7 +11,7 @@ const api="https://api.github.com/repos/mm2vault/VYRA/releases?per_page=30";
 fetch(api,{headers:{Accept:"application/vnd.github+json"}}).then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
   const latest=rs.filter(x=>!x.draft).sort((a,b)=>new Date(b.published_at||b.created_at)-new Date(a.published_at||a.created_at))[0];
   if(!latest)throw 0;
-  const apk=(latest.assets||[]).find(x=>x.name.toLowerCase().endsWith(".apk"));
+  const apk=(latest.assets||[]).find(x=>x.name.toLowerCase().includes("release")&&x.name.toLowerCase().endsWith(".apk")) || (latest.assets||[]).find(x=>x.name.toLowerCase().endsWith(".apk"));
   const size=apk?.size?(" · "+(apk.size/1048576).toFixed(1)+" MB"):"";
   version.textContent="Son sürüm: "+latest.tag_name+(latest.prerelease?" · prerelease":"")+size;
   const url=apk?.browser_download_url||latest.html_url;
@@ -36,7 +36,7 @@ menu?.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
 document.addEventListener("pointerdown",e=>{
   if(menu?.classList.contains("open")&&!menu.contains(e.target)&&e.target!==menuBtn)closeMenu();
 });
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu();if(document.getElementById("lightbox")?.classList.contains("open"))closeLightbox?.()}});
 
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add("visible");revealObserver.unobserve(e.target)}
