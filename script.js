@@ -129,10 +129,9 @@ const screenImages=[
  "https://i.imgur.com/QtuxYWK.jpeg",
  "https://i.imgur.com/xReSL3X.jpeg",
  "https://i.imgur.com/2T3pYsK.jpeg",
- "https://i.imgur/3o4hIif.jpeg",
+ "https://i.imgur.com/3o4hIif.jpeg",
  "https://i.imgur.com/vT8892A.jpeg"
 ];
-screenImages[3]="https://i.imgur.com/3o4hIif.jpeg";
 
 const cinematic=document.createElement("section");
 cinematic.id="cinematic";
