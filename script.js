@@ -1,9 +1,10 @@
 const btn=document.getElementById("downloadBtn"),btn2=document.getElementById("downloadBtn2"),version=document.getElementById("version"),menu=document.querySelector(".mobile-menu"),menuBtn=document.querySelector(".menu-btn"),nav=document.querySelector(".nav"),progress=document.getElementById("progress"),heroVisual=document.getElementById("heroVisual");
 const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce)document.documentElement.classList.add("js-ready");
 const finePointer=window.matchMedia("(pointer:fine)").matches;
 const linkId=document.querySelector('meta[name="vyra-enhanced"]');
 if(!linkId){
-  const l=document.createElement("link");l.rel="stylesheet";l.href="enhancements.css";document.head.appendChild(l);
+  const l=document.createElement("link");l.rel="stylesheet";l.href="enhancements.css?v=20261009";document.head.appendChild(l);
   const m=document.createElement("meta");m.name="vyra-enhanced";m.content="1";document.head.appendChild(m);
 }
 
