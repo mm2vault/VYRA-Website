@@ -37,7 +37,7 @@ menu?.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
 document.addEventListener("pointerdown",e=>{
   if(menu?.classList.contains("open")&&!menu.contains(e.target)&&e.target!==menuBtn)closeMenu();
 });
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu();if(document.getElementById("lightbox")?.classList.contains("open"))closeLightbox?.()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
 
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add("visible");revealObserver.unobserve(e.target)}
@@ -159,8 +159,3 @@ if(playerPanel){
   }
 }
 
-addEventListener("keydown",e=>{
-  if((e.key==="ArrowRight"||e.key==="ArrowLeft")&&document.activeElement?.closest("#cinematic")){
-    e.preventDefault();setCine(cineIndex+(e.key==="ArrowRight"?1:-1));
-  }
-});
