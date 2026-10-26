@@ -1,124 +1,204 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#07030d">
-<meta name="description" content="VYRA — modern, hızlı ve kişisel Android müzik deneyimi.">
-<title>VYRA — Müziği sadece dinleme. Hisset.</title>
-<link rel="icon" href="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png">
-<link rel="stylesheet" href="style.css?v=20261011">
+<meta name="theme-color" content="#07050d">
+<title>VYRA — Your music. Your vibe.</title>
+<meta name="description" content="VYRA is an open-source Android music player with synced lyrics, local file playback, audio controls and scrobbling. Your music. Your vibe.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VYRA — Your music. Your vibe.">
+<meta property="og:description" content="An open-source Android music player built around the way you listen.">
+<meta property="og:image" content="https://mm2vault.github.io/VYRA-Website/assets/icon-512.png">
+<meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css?v=20261026">
 </head>
 <body>
-<div class="site-bg" aria-hidden="true"><div class="orb orb-a"></div><div class="orb orb-b"></div><div class="grid"></div></div>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<div class="atmos" aria-hidden="true"><i class="beam b1"></i><i class="beam b2"></i><i class="orb o1"></i><i class="orb o2"></i></div>
 <div id="progress" aria-hidden="true"></div>
 
-<header class="nav" id="top">
+<header class="nav" id="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="VYRA ana sayfa"><span class="brand-icon"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt=""></span><span>VYRA</span></a>
-    <nav class="desktop-nav" aria-label="Ana menü">
-      <a href="#features">Özellikler</a><a href="#screens">Uygulama</a><a href="#experience">Deneyim</a><a href="#download">İndir</a>
+    <a class="brand" href="#top" aria-label="VYRA"><img src="assets/icon-192.png" alt="" width="34" height="34"><span>VYRA</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#top" data-i18n="nav_home">Home</a>
+      <a href="#features" data-i18n="nav_features">Features</a>
+      <a href="#app" data-i18n="nav_app">App</a>
+      <a href="#film" data-i18n="nav_film">Film</a>
+      <a href="#experience" data-i18n="nav_exp">Experience</a>
+      <a href="#about" data-i18n="nav_about">About</a>
     </nav>
-    <div class="nav-right">
-      <a class="github-link" href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub <span>↗</span></a>
-      <button class="menu-btn" type="button" aria-label="Menüyü aç" aria-expanded="false"><i></i><i></i></button>
+    <div class="nav-actions">
+      <button class="lang" type="button" id="lang" aria-label="Switch language / Dili değiştir">TR</button>
+      <a class="btn btn-sm primary" href="#download" data-i18n="nav_get">Get VYRA</a>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><i></i><i></i></button>
     </div>
-    <nav class="mobile-menu" aria-label="Mobil menü">
-      <a href="#features">Özellikler</a><a href="#screens">Uygulama</a><a href="#experience">Deneyim</a><a href="#download">İndir</a>
-      <a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub ↗</a>
-    </nav>
   </div>
+  <nav class="drawer" id="drawer" aria-label="Mobile" hidden>
+    <a href="#top" data-i18n="nav_home">Home</a>
+    <a href="#features" data-i18n="nav_features">Features</a>
+    <a href="#app" data-i18n="nav_app">App</a>
+    <a href="#film" data-i18n="nav_film">Film</a>
+      <a href="#experience" data-i18n="nav_exp">Experience</a>
+    <a href="#about" data-i18n="nav_about">About</a>
+    <a href="#download" data-i18n="nav_get">Get VYRA</a>
+  </nav>
 </header>
 
-<main>
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy reveal">
-      <div class="eyebrow"><span></span> ANDROID MUSIC EXPERIENCE <b>● LIVE</b></div>
-      <h1>Müziği sadece<br><em>dinleme.</em><br>Hisset.</h1>
-      <p>VYRA; keşif, arka planda oynatma, playlistler ve kişisel müzik deneyimini tek bir modern Android uygulamasında buluşturur.</p>
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow" data-i18n="hero_eyebrow">Open-source music player for Android</p>
+      <h1 data-i18n-html="hero_h1">Feel every<br><em>frequency.</em></h1>
+      <p class="lead" data-i18n="hero_lead">Your sound. Your atmosphere. Your own rhythm. A music experience designed around the way you listen.</p>
+      <p class="slogan">Your music. Your vibe.</p>
       <div class="actions">
-        <a id="downloadBtn" class="btn primary" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">APK'yı İndir <b>↓</b></a>
-        <a class="btn secondary" href="#features">VYRA'yı Keşfet <b>→</b></a>
+        <a id="dl1" class="btn primary" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener"><span data-i18n="cta_dl">Download for Android</span><b aria-hidden="true">↓</b></a>
+        <a class="btn ghost" href="#app"><span data-i18n="cta_see">See the app</span><b aria-hidden="true">→</b></a>
       </div>
-      <div class="release-line"><span class="live-dot"></span><span id="version">Son sürüm kontrol ediliyor…</span></div>
-      <div class="hero-stats"><div><strong>Android 8+</strong><span>Uyumluluk</span></div><div><strong>Open Source</strong><span>Şeffaf kod</span></div><div><strong>Ücretsiz</strong><span>Her zaman</span></div></div>
+      <p class="release-line"><span class="dot" aria-hidden="true"></span><span id="ver1" data-i18n="rel_checking">Checking latest release…</span></p>
     </div>
-
-    <div class="hero-stage reveal" id="heroStage">
-      <div class="stage-glow"></div><div class="stage-ring ring-a"></div><div class="stage-ring ring-b"></div>
-      <div class="phone-wrap">
-        <div class="phone"><div class="phone-camera"></div><div class="phone-speaker"></div><img src="https://i.imgur.com/QtuxYWK.jpeg" alt="VYRA uygulama ekranı"></div>
+    <div class="hero-art" id="heroArt" aria-hidden="true">
+      <div class="halo"></div>
+      <svg class="ring r1" viewBox="0 0 400 400"><circle cx="200" cy="200" r="196" /><circle cx="200" cy="200" r="150" class="dash"/></svg>
+      <svg class="ring r2" viewBox="0 0 400 400"><circle cx="200" cy="200" r="120"/><circle cx="200" cy="200" r="86" class="dash"/><circle cx="200" cy="200" r="52"/></svg>
+      <div class="disc"></div>
+      <img class="emblem" src="assets/emblem.png" alt="" width="384" height="384" fetchpriority="high">
+      <div class="eq" data-viz>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
-      <div class="float-card card-a"><span>♫</span><div><b>Now Playing</b><small>VYRA Player · 03:42</small></div></div>
-      <div class="float-card card-b"><span class="bars-mini"><i></i><i></i><i></i><i></i></span><div><b>Background</b><small>Playback aktif</small></div></div>
-      <div class="float-card card-c"><span>♡</span><div><b>Liked</b><small>Koleksiyonuna eklendi</small></div></div>
+    </div>
+  </div>
+  <a class="scroll" href="#features" aria-label="Scroll to features"><span></span></a>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <header class="head reveal"><p class="eyebrow" data-i18n="f_eyebrow">Features</p><h2 data-i18n-html="f_h2">More than a player.<br><em>Built around you.</em></h2><p class="sub" data-i18n="f_sub">Everything listed here is described in the project's own README and has a module in the source code.</p></header>
+    <div class="cards">
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg><h3 data-i18n="c1_t">Background playback</h3><p data-i18n="c1_d">Keep listening while the screen is off or another app is open.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M17 14l4 3-4 3z"/></svg><h3 data-i18n="c2_t">Live synced lyrics</h3><p data-i18n="c2_d">Follow lyrics in time with the music, with translation and romanization options.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><h3 data-i18n="c3_t">Local and YouTube Music</h3><p data-i18n="c3_d">Play files stored on your device, or sign in to bring in your YouTube Music library.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M10 20V4M15 20v-7M20 20V8"/></svg><h3 data-i18n="c4_t">Audio controls</h3><p data-i18n="c4_d">Loudness normalization, tempo, pitch and speed, crossfade, and system equalizer integration.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><h3 data-i18n="c5_t">Spotify playlist import</h3><p data-i18n="c5_d">Bring a playlist over from Spotify instead of rebuilding it by hand.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3 data-i18n="c6_t">Scrobbling and presence</h3><p data-i18n="c6_d">Last.fm scrobbling, ListenBrainz history sync and Discord rich presence.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"/></svg><h3 data-i18n="c7_t">Listening statistics</h3><p data-i18n="c7_d">See your top songs, artists and listening time whenever you want.</p></article>
+      <article class="card reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor" stroke="none"/></svg><h3 data-i18n="c8_t">Material 3 and dynamic color</h3><p data-i18n="c8_d">Album-art powered colors, up to 9 player styles and deep customization.</p></article>
     </div>
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true"><div class="marquee-track"><span>FAST PLAYBACK</span><b>✦</b><span>BACKGROUND AUDIO</span><b>✦</b><span>PLAYLISTS</span><b>✦</b><span>SMART QUEUE</span><b>✦</b><span>YOUR MUSIC</span><b>✦</b><span>LIVE LYRICS</span><b>✦</b><span>FAST PLAYBACK</span><b>✦</b></div></div>
-
-<section id="features" class="section">
-  <div class="container">
-    <div class="section-head reveal"><span>01 / ÖZELLİKLER</span><h2>Bir oynatıcıdan<br><em>daha fazlası.</em></h2><p>VYRA'nın her parçası müziği daha hızlı bulman, daha rahat dinlemen ve deneyimini kendine göre şekillendirmen için tasarlandı.</p></div>
-    <div class="feature-grid">
-      <article class="feature feature-wide reveal"><label>01 / PLAYBACK</label><i>♫</i><h3>Arka planda çal</h3><p>Ekranı kapat, uygulamadan çık veya başka bir uygulamaya geç. Müziğin devam etsin.</p><strong>BACKGROUND AUDIO</strong></article>
-      <article class="feature reveal"><label>02 / DISCOVER</label><i>⌕</i><h3>Hızlı keşif</h3><p>Aradığın müziğe hızlı ulaş ve yeni içerikleri keşfet.</p></article>
-      <article class="feature reveal"><label>03 / QUEUE</label><i>≡</i><h3>Akıllı kuyruk</h3><p>Sıradaki parçaları düzenle ve kendi akışını oluştur.</p></article>
-      <article class="feature reveal"><label>04 / LIBRARY</label><i>♡</i><h3>Kişisel koleksiyon</h3><p>Beğendiklerin, geçmişin ve playlistlerin tek bir yerde.</p></article>
-      <article class="feature reveal"><label>05 / AUDIO</label><i>◒</i><h3>Ses kontrolü</h3><p>Desteklenen ses özellikleriyle dinleme deneyimini özelleştir.</p></article>
-      <article class="feature feature-wide reveal"><label>06 / LYRICS</label><i>≋</i><h3>Sözlerle birlikte dinle</h3><p>Desteklenen içeriklerde şarkı sözlerini takip et; müzik ve ekran aynı ritimde ilerlesin.</p><strong>LYRICS MODE</strong></article>
-      <article class="feature reveal"><label>07 / PERFORMANCE</label><i>⚡</i><h3>Hızlı ve akıcı</h3><p>Gereksiz yüklerden uzak, mobil odaklı bir deneyim.</p></article>
-      <article class="feature reveal"><label>08 / DESIGN</label><i>◐</i><h3>Modern arayüz</h3><p>Koyu tema, mor atmosfer ve temiz tasarım dili.</p></article>
-      <article class="feature reveal"><label>09 / CONTROL</label><i>⌁</i><h3>Bildirim kontrolleri</h3><p>Kilit ekranından ve bildirim panelinden oynatmayı yönet.</p></article>
-      <article class="feature feature-wide reveal"><label>10 / OPEN SOURCE</label><i>∞</i><h3>Şeffaf, özgür, geliştirilebilir</h3><p>Kodu inceleyebilir, projeyi takip edebilir ve gelişimine katkıda bulunabilirsin.</p><strong>OPEN SOURCE</strong></article>
+<section class="section showcase" id="app">
+  <div class="wrap show-grid">
+    <div class="show-copy reveal">
+      <p class="eyebrow" data-i18n="s_eyebrow">The app</p>
+      <h2 data-i18n-html="s_h2">Your phone,<br><em>your VYRA.</em></h2>
+      <p class="sub" data-i18n="s_sub">Real screens from the app. Pick one to look closer.</p>
+      <div class="tabs" role="tablist" aria-label="App screens" id="tabs">
+        <button role="tab" aria-selected="true" aria-controls="shot" data-i="0" id="t0">Home</button>
+        <button role="tab" aria-selected="false" aria-controls="shot" data-i="1" id="t1">Discover</button>
+        <button role="tab" aria-selected="false" aria-controls="shot" data-i="2" id="t2">Player</button>
+        <button role="tab" aria-selected="false" aria-controls="shot" data-i="3" id="t3">Library</button>
+        <button role="tab" aria-selected="false" aria-controls="shot" data-i="4" id="t4">Playlist</button>
+      </div>
+      <p class="note" data-i18n="s_note">Screenshots may differ slightly between app versions.</p>
+    </div>
+    <div class="device-stage reveal" id="stage">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="device" id="device">
+        <div class="bezel" role="tabpanel" id="shot" aria-labelledby="t0">
+          <img id="shotImg" src="https://i.imgur.com/QtuxYWK.jpeg" alt="VYRA home screen" decoding="async">
+          <p class="fallback" id="shotFallback" hidden data-i18n="s_fallback">Screenshot could not be loaded.</p>
+        </div>
+        <span class="sheen" aria-hidden="true"></span>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="stats container reveal"><div><b>01</b><span>Modern deneyim</span></div><div><b>24/7</b><span>Arka plan oynatma</span></div><div><b>∞</b><span>Kendi müziğin</span></div><div><b>100%</b><span>VYRA ruhu</span></div></section>
-
-<section id="screens" class="section">
-  <div class="container">
-    <div class="section-head reveal"><span>02 / UYGULAMA</span><h2>Telefonunda<br><em>VYRA.</em></h2><p>Gerçek VYRA ekranlarını yakından incele ve uygulamanın atmosferini keşfet.</p></div>
-    <div class="gallery reveal">
-      <button class="shot shot-main" type="button"><img src="https://i.imgur.com/QtuxYWK.jpeg" alt="VYRA Home"><span>HOME</span></button>
-      <button class="shot" type="button"><img src="https://i.imgur.com/xReSL3X.jpeg" alt="VYRA Discover"><span>DISCOVER</span></button>
-      <button class="shot" type="button"><img src="https://i.imgur.com/2T3pYsK.jpeg" alt="VYRA Player"><span>PLAYER</span></button>
-      <button class="shot" type="button"><img src="https://i.imgur.com/3o4hIif.jpeg" alt="VYRA Library"><span>LIBRARY</span></button>
-      <button class="shot" type="button"><img src="https://i.imgur.com/vT8892A.jpeg" alt="VYRA Playlist"><span>PLAYLIST</span></button>
+<section class="section" id="film">
+  <div class="wrap">
+    <header class="head reveal"><p class="eyebrow" data-i18n="v_eyebrow">Film</p><h2 data-i18n-html="v_h2">Meet <em>VYRA.</em></h2></header>
+    <div class="film reveal">
+      <video controls preload="none" playsinline poster="media/vyra-promo-poster.jpg" aria-label="VYRA promo film">
+        <source src="media/vyra-promo-720p.mp4" type="video/mp4">
+      </video>
+      <p class="viz-note" data-i18n="v_note">42-second promo. Sound plays only when you press play.</p>
     </div>
   </div>
 </section>
 
-<section id="experience" class="section experience-section">
-  <div class="container">
-    <div class="section-head reveal"><span>03 / DENEYİM</span><h2>Müziğin ritmine<br><em>uyum sağlar.</em></h2></div>
-    <div class="experience-grid">
-      <article class="experience-panel player-panel reveal">
-        <span class="panel-label">GÖRSEL DEMO · SES ÇALMAZ</span><div class="player-art"><img src="https://i.imgur.com/2T3pYsK.jpeg" alt="VYRA player"></div>
-        <div class="player-title"><b>VYRA — Music Experience</b><span>Background playback aktif</span></div>
-        <div class="player-progress"><i></i></div><div class="player-time"><span>00:00</span><span>03:42</span></div>
-        <div class="player-controls"><button type="button" data-skip="-10" aria-label="10 saniye geri">↶</button><button class="play" type="button" aria-label="Görsel demoyu başlat">▶</button><button type="button" data-skip="10" aria-label="10 saniye ileri">↷</button></div>
-      </article>
-      <article class="experience-panel reveal"><span class="panel-label">VISUALIZER</span><h3>Ritmi gör.</h3><p>Hareketli dalga formu VYRA'nın müzik odaklı atmosferini güçlendirir.</p><div class="visualizer"><i style="--h:20%"></i><i style="--h:37%"></i><i style="--h:54%"></i><i style="--h:71%"></i><i style="--h:88%"></i><i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:69%"></i><i style="--h:86%"></i><i style="--h:33%"></i><i style="--h:50%"></i><i style="--h:67%"></i><i style="--h:84%"></i><i style="--h:31%"></i><i style="--h:48%"></i><i style="--h:65%"></i><i style="--h:82%"></i><i style="--h:29%"></i><i style="--h:46%"></i><i style="--h:63%"></i><i style="--h:80%"></i><i style="--h:27%"></i><i style="--h:44%"></i><i style="--h:61%"></i></div></article>
-      <article class="experience-panel reveal"><span class="panel-label">YOUR LIBRARY</span><h3>Her şeyin<br>tek yerde.</h3><div class="library"><span>♡ Beğenilenler <b>›</b></span><span>◷ Dinleme geçmişi <b>›</b></span><span>≡ Playlistler <b>›</b></span><span>＋ Kuyruğa ekle <b>›</b></span></div></article>
-      <article class="experience-panel reveal"><span class="panel-label">MADE FOR ANDROID</span><h3>Telefonuna<br>uyumlu.</h3><p>Küçük ekranlardan büyük ekranlara kadar responsive düşünülmüş modern deneyim.</p><div class="device-tags"><span>PHONE</span><span>TABLET</span><span>ANDROID</span></div></article>
+<section class="section" id="experience">
+  <div class="wrap">
+    <header class="head reveal"><p class="eyebrow" data-i18n="e_eyebrow">Experience</p><h2 data-i18n-html="e_h2">Made for<br><em>your rhythm.</em></h2></header>
+    <div class="exp reveal">
+      <div class="wave" aria-hidden="true" data-viz>
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <p class="viz-note" data-i18n="e_note">Decorative visual — the website plays no audio.</p>
+      <div class="exp-cols">
+        <div><h3 data-i18n="e1_t">Look</h3><p data-i18n="e1_d">Dark surfaces, album-art colors and a choice of player styles.</p></div>
+        <div><h3 data-i18n="e2_t">Sound</h3><p data-i18n="e2_d">Normalization, crossfade, tempo and pitch — set it up your way.</p></div>
+        <div><h3 data-i18n="e3_t">Control</h3><p data-i18n="e3_d">Gesture, animation and layout settings to shape the app around your workflow.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="manifesto">
-  <div class="container manifesto-inner reveal"><div class="manifesto-logo"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt="VYRA"></div><div><span>04 / FELSEFE</span><h2>Müzik sana<br><em>ait olmalı.</em></h2><p>Gereksiz karmaşayı kaldır. Müziği merkeze koy. VYRA hızlı açılır, modern görünür ve kontrolü sana bırakır.</p></div></div>
+<section class="section about" id="about">
+  <div class="wrap about-grid reveal">
+    <img class="about-mark" src="assets/emblem.png" alt="VYRA emblem" width="384" height="384" loading="lazy">
+    <div>
+      <p class="eyebrow" data-i18n="a_eyebrow">About VYRA</p>
+      <h2 data-i18n-html="a_h2">Music should<br><em>feel like yours.</em></h2>
+      <p class="sub" data-i18n="a_p1">VYRA is built around a simple idea: the player should disappear and the music should stay. Fewer detours, more atmosphere, and settings that let you decide how it looks and sounds.</p>
+      <p class="sub" data-i18n="a_p2">It is open source under the GPL-3.0 license, so you can read the code, follow development and contribute.</p>
+    </div>
+  </div>
 </section>
 
-<section id="download" class="section download-section">
-  <div class="container reveal"><div class="download-box"><div><span>05 / BAŞLA</span><h2>VYRA'yı<br><em>keşfet.</em></h2><p>Android cihazında yeni müzik deneyimini başlat.</p><div class="pills"><span>Android 8+</span><span>Open Source</span><span>Ücretsiz</span></div></div><div class="download-side"><a id="downloadBtn2" class="btn primary" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">En Son APK'yı İndir <b>↓</b></a><a href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">Tüm sürümleri gör ↗</a><small>Güvenli indirme · GitHub Releases</small></div></div></div>
+<section class="section" id="download">
+  <div class="wrap">
+    <div class="dl reveal">
+      <div>
+        <p class="eyebrow" data-i18n="d_eyebrow">Download</p>
+        <h2 data-i18n-html="d_h2">Get <em>VYRA.</em></h2>
+        <p class="sub" data-i18n="d_sub">Requires Android 8.0 or newer. Builds are published on GitHub Releases.</p>
+        <ul class="facts">
+          <li data-i18n="d_f1">Android 8.0+ (API 26)</li>
+          <li data-i18n="d_f2">Open source · GPL-3.0</li>
+          <li data-i18n="d_f3">YouTube Music may need a VPN in unsupported regions</li>
+        </ul>
+      </div>
+      <div class="dl-side">
+        <a id="dl2" class="btn primary big" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener"><span data-i18n="cta_dl2">Download latest APK</span><b aria-hidden="true">↓</b></a>
+        <p class="release-line"><span class="dot" aria-hidden="true"></span><span id="ver2" data-i18n="rel_checking">Checking latest release…</span></p>
+        <a class="link" href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener"><span data-i18n="d_all">All releases</span> ↗</a>
+        <a class="link" href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener"><span data-i18n="d_src">Source code on GitHub</span> ↗</a>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
 
-<footer><div class="container footer-inner"><a class="brand" href="#top"><span class="brand-icon"><img src="https://raw.githubusercontent.com/mm2vault/VYRA/main/app/src/main/res/drawable/resim.png" alt=""></span><span>VYRA</span></a><p>Müziği sadece dinleme. Hisset.</p><div><a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub</a><a href="https://github.com/mm2vault/VYRA/releases" target="_blank" rel="noopener">Releases</a></div></div></footer>
-<script src="script.js?v=20261011"></script>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div><a class="brand" href="#top"><img src="assets/icon-192.png" alt="" width="30" height="30"><span>VYRA</span></a><p class="slogan sm">Your music. Your vibe.</p></div>
+    <nav aria-label="Footer">
+      <a href="#features" data-i18n="nav_features">Features</a>
+      <a href="#app" data-i18n="nav_app">App</a>
+      <a href="#download" data-i18n="nav_get">Get VYRA</a>
+      <a href="https://github.com/mm2vault/VYRA" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://github.com/mm2vault/VYRA/blob/main/PRIVACY.md" target="_blank" rel="noopener"><span data-i18n="f_priv">Privacy</span> ↗</a>
+      <a href="https://github.com/mm2vault/VYRA/blob/main/LICENSE" target="_blank" rel="noopener"><span data-i18n="f_lic">License</span> ↗</a>
+    </nav>
+  </div>
+  <p class="copy">© 2026 VYRA</p>
+</footer>
+<script src="script.js?v=20261026"></script>
 </body>
 </html>
