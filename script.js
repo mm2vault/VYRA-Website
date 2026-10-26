@@ -40,10 +40,10 @@ const TR = {
 };
 const EN = { rel_ready: "APK ready", rel_page: "open release page", rel_pre: "pre-release", rel_fail: "Check releases on GitHub." };
 const SHOT_ALT = {
-  en: ["VYRA home screen", "VYRA discover screen", "VYRA player screen", "VYRA library screen", "VYRA playlist screen"],
-  tr: ["VYRA ana ekran", "VYRA keşfet ekranı", "VYRA çalar ekranı", "VYRA kitaplık ekranı", "VYRA çalma listesi ekranı"]
+  en: ["VYRA home screen with quick picks and a mini player", "VYRA search and discover screen with mood and genre tiles", "VYRA library screen with liked songs, offline, cached and local files", "VYRA listening statistics screen with artist breakdown", "VYRA full-screen player showing live lyrics"],
+  tr: ["VYRA ana ekran: hızlı seçimler ve mini çalar", "VYRA arama ve keşfet ekranı: ruh hali ve tür kutuları", "VYRA kütüphane: beğenilenler, çevrimdışı, önbellek ve yerel dosyalar", "VYRA dinleme istatistikleri ve sanatçı dökümü", "VYRA tam ekran çalar: canlı sözler"]
 };
-const TABS = { en: ["Home", "Discover", "Player", "Library", "Playlist"], tr: ["Ana ekran", "Keşfet", "Çalar", "Kitaplık", "Liste"] };
+const TABS = { en: ["Home", "Search", "Library", "Stats", "Lyrics"], tr: ["Ana sayfa", "Ara", "Kütüphane", "İstatistik", "Sözler"] };
 const stash = new Map();
 $$("[data-i18n],[data-i18n-html]").forEach(el => stash.set(el, el.hasAttribute("data-i18n-html") ? el.innerHTML : el.textContent));
 let lang = (navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en";
@@ -168,7 +168,7 @@ const stage = $("#stage"), device = $("#device");
 tilt(stage, 1, (x, y) => { device.style.setProperty("--ry", (-8 + x * 18).toFixed(1) + "deg"); device.style.setProperty("--rx", (3 - y * 14).toFixed(1) + "deg"); });
 
 /* ---------- screenshot tabs ---------- */
-const SHOTS = ["QtuxYWK", "xReSL3X", "2T3pYsK", "3o4hIif", "vT8892A"].map(id => `https://i.imgur.com/${id}.jpeg`);
+const SHOTS = [1, 2, 3, 4, 5].map(n => `assets/shots/${n}.jpg`);
 const img = $("#shotImg"), fb = $("#shotFallback"), tabs = $$("#tabs button");
 let current = 0;
 function show(i, focus) {
