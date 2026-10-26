@@ -8,7 +8,7 @@ root.classList.add("js");
 
 /* ---------- i18n (EN / TR) ---------- */
 const TR = {
-  skip: "İçeriğe geç", nav_home: "Ana sayfa", nav_features: "Özellikler", nav_app: "Uygulama", nav_exp: "Deneyim", nav_film: "Film", v_eyebrow: "Film", v_h2: "<em>VYRA</em> ile tanış.", v_note: "42 saniyelik tanıtım. Ses yalnızca oynat'a bastığında çalar.", nav_about: "Hakkında", nav_get: "VYRA'yı indir",
+  skip: "İçeriğe geç", nav_home: "Ana sayfa", nav_features: "Özellikler", nav_app: "Uygulama", nav_exp: "Deneyim", nav_film: "Film", chip1: "Android 8.0+", chip2: "Açık kaynak · GPL-3.0", chip3: "Senkron sözler", v_eyebrow: "Film", v_h2: "<em>VYRA</em> ile tanış.", v_note: "42 saniyelik tanıtım. Ses yalnızca oynat'a bastığında çalar.", nav_about: "Hakkında", nav_get: "VYRA'yı indir",
   hero_eyebrow: "Android için açık kaynak müzik çalar",
   hero_h1: "Her frekansı<br><em>hisset.</em>",
   hero_lead: "Senin sesin. Senin atmosferin. Kendi ritmin. Dinleme şeklin etrafında tasarlanmış bir müzik deneyimi.",
@@ -176,6 +176,8 @@ function show(i, focus) {
   tabs.forEach((b, j) => { b.setAttribute("aria-selected", String(j === i)); b.tabIndex = j === i ? 0 : -1; });
   $("#shot").setAttribute("aria-labelledby", "t" + i);
   if (focus) tabs[i].focus();
+  const n = SHOTS.length;
+  $("#peekL").src = SHOTS[(i + n - 1) % n]; $("#peekR").src = SHOTS[(i + 1) % n];
   img.classList.add("swap");
   setTimeout(() => { fb.hidden = true; img.hidden = false; img.alt = SHOT_ALT[lang][i]; img.src = SHOTS[i]; }, reduce ? 0 : 160);
 }
@@ -189,6 +191,14 @@ tabs.forEach((b, i) => {
     if (k) { e.preventDefault(); show((i + k + tabs.length) % tabs.length, true); }
   });
 });
+
+$("#peekL").src = SHOTS[SHOTS.length - 1]; $("#peekR").src = SHOTS[1];
+
+/* card spotlight */
+if (fine && !reduce) $$(".card").forEach(c => c.addEventListener("pointermove", e => {
+  const r = c.getBoundingClientRect();
+  c.style.setProperty("--mx", e.clientX - r.left + "px"); c.style.setProperty("--my", e.clientY - r.top + "px");
+}));
 
 applyLang();
 loadRelease();
